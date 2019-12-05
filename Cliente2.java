@@ -26,7 +26,7 @@ Decrescente: quando a razão for menor que zero (15, 10, 5, 0, - 5,...), sendo r 
  * 
  */
 
-public class Cliente {
+public class Cliente2 {
 
 	private static Interface controlador = null;
 	private static int usuario = 0;
@@ -73,7 +73,6 @@ public class Cliente {
 				break;
 
 			case "3":
-				//menu();
 				break;
 
 
@@ -139,11 +138,11 @@ public class Cliente {
 			int resp = Integer.parseInt(Ptermo);
 
 			//enquanto a pergunta não atender a necessidade repete a pergunta
-			//while (resp < 0 || resp > 10)
-		//{
+			while (resp < 0 || resp > 10)
+			{
 				Ptermo = JOptionPane.showInputDialog(null, "Digite o primeiro termo da PA:", "CLIENTE (1)", JOptionPane.PLAIN_MESSAGE);
 				resp = Integer.parseInt(Ptermo);
-			//}
+			}
 			//salva o valor 
 			controlador.setPtermo(resp);
 
@@ -173,13 +172,13 @@ public class Cliente {
 			
 			//pergunta ao usuario1:			 
 
-/*
+
 			int resposta  =  JOptionPane.showConfirmDialog(null, "Deseja exibir o Resultado ?" );
 			System.out.println(resposta);
 			controlador.setPodever(resposta);
 			controlador.incrementarCliente();
 
-			if(resposta==0) {*/
+			if(resposta==0) {
 
 				JOptionPane.showMessageDialog(null,"Você informou o primeiro termo da PA e o ultimo termo da PA."
 						+ "\nFÓRMULA PA = An=A+(n-1)*R"
@@ -187,7 +186,7 @@ public class Cliente {
 						
 						+(controlador.getPtermo()+(controlador.getQtermo()-1)*controlador.getRazao())
 						);
-//			}
+			}
 
 
 
@@ -203,12 +202,6 @@ public class Cliente {
 				
 				controlador.setCount(1);
 				usuario1(); 
-			}else {
-				System.err.println(" Saindo do Sistema ");
-				
-				System.exit(3);
-
-				
 			}
 
 
@@ -237,7 +230,7 @@ public class Cliente {
 			System.out.println("Aguardando parametros do primeiro cliente.");
 			JOptionPane.showMessageDialog(null, "Aguardando parametros do primeiro cliente.", "CLIENTE (2)", JOptionPane.WARNING_MESSAGE);
 			//espera a vez
-		//	while(usuario != controlador.getCliente()){}
+			while(usuario != controlador.getCliente()){}
 
 			String Razao = JOptionPane.showInputDialog(null, "Digite a Razao da PA", "CLIENTE (2)", JOptionPane.PLAIN_MESSAGE);
 			controlador.setRazao(Integer.parseInt(Razao));
@@ -249,13 +242,20 @@ public class Cliente {
 
 			//efetua a pergunta
 			
-			int resposta  =  JOptionPane.showConfirmDialog(null, "Deseja exibir o Resultado ?" );
-			System.out.println(resposta);
-			controlador.setPodever(resposta);
-			controlador.incrementarCliente();
+			/*
+			String DistCarga = JOptionPane.showInputDialog(null, "Digite a Distancia das Cargas(d) : ", "CLIENTE (2)", JOptionPane.PLAIN_MESSAGE);
+			//controlador.setDistCarga(Float.parseFloat(DistCarga));
+			float resp = Float.parseFloat(DistCarga);
 
+			while (resp < controlador.getConstElet())	{
 
+				DistCarga = JOptionPane.showInputDialog(null, "Digite a Digite a Distancia das Cargas(d) : ", "CLIENTE (2)", JOptionPane.PLAIN_MESSAGE);
+				resp = Float.parseFloat(DistCarga);
 
+			}
+
+			controlador.setDistCarga(resp);
+			*/
 			//passa a vez para o usuario 1
 			controlador.incrementarCliente();
 
@@ -263,20 +263,19 @@ public class Cliente {
 			while(usuario != controlador.getCliente()){}
 
 			// resposta do servidor			 
-			//if(controlador.getPodever()==0)
-			//{
+			if(controlador.getPodever()==0)
+			{
 				JOptionPane.showMessageDialog(null,"Você informou a Razao da PA. \n "
 						+ "FÓRMULA PA = An=A+(n-1)*R"
-						+ "\nO Calculo da PA é : "
 						
 						+(controlador.getPtermo()+(controlador.getQtermo()-1)*controlador.getRazao())
 						);
-			//}else {
+			}else {
 
-				//JOptionPane.showMessageDialog(null,"Usuário 1 não permitiu mostrar o resultado. \n");
-			//}
+				JOptionPane.showMessageDialog(null,"Usuário 1 não permitiu mostrar o resultado. \n");
+			}
 			
-			//controlador.resetar();
+			controlador.resetar();
 			// Retornar ao MENU	
 			controlador.resetar();
 			controlador.incrementarCliente();
@@ -288,11 +287,6 @@ public class Cliente {
 				
 				controlador.setCount(1);
 				usuario2(); 
-			}else {
-					System.err.println(" Saindo do Sistema ");
-				
-				System.exit(3);
-
 			}
 
 
